@@ -1,40 +1,40 @@
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
 
-const form = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // This stops the redirect!
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    // Visual feedback for your "Terminal"
+    formStatus.innerHTML = '<span class="terminal-comment">// Executing sendMessage()...</span>';
 
-  formStatus.className = "form-status show";
-  formStatus.innerText = "🚀 Sending your message...";
+    const formData = new FormData(contactForm);
+    
+    try {
+        const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
 
-  const payload = {
-    content: `
-📩 **New Portfolio Contact**
+        if (response.ok) {
+            // 1. Add the classes that trigger the CSS styling and animation
+            formStatus.classList.add("show", "success");
+            
+            // 2. Update the text content
+            formStatus.innerHTML = '<span class="terminal-prompt">$</span> // Success: Message delivered to Tanya.';
+            
+            // 3. Clear the form
+            contactForm.reset();
 
-👤 Name: ${form.name.value}
-📧 Email: ${form.email.value}
-📝 Subject: ${form.subject.value}
-
-💬 Message:
-${form.message.value}
-`
-  };
-
-  try {
-    await fetch("PASTE_YOUR_DISCORD_WEBHOOK_URL", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    formStatus.classList.add("success");
-    formStatus.innerText = "🎉 Message sent successfully! I’ll get back to you soon.";
-
-    form.reset();
-  } catch (error) {
-    formStatus.classList.add("error");
-    formStatus.innerText = "❌ Something went wrong. Please try again.";
-  }
+            // 4. (Optional) Hide it again after 5 seconds so the terminal looks clean
+            setTimeout(() => {
+                formStatus.classList.remove("show");
+            }, 5000);
+        } else {
+            throw new Error();
+        }
+    } catch (error) {
+        // Error state
+        formStatus.innerHTML = '<span style="color: #ff0000;">// Error: Protocol failed. Check connection.</span>';
+    }
 });
-
