@@ -1,6 +1,7 @@
-💻 Web & App Developer | Research Assistant | Problem Solver
+Link to the portfolio 
+## https://tanyaaggarwal08.github.io/
 
-🌱 Currently working with Flutter, React, Python, Julia, and Machine Learning
+💻 Web & App Developer | Research Assistant | Problem Solver | Tutor
 
 📱 Building end-to-end applications — including FoodLink, a community-focused Flutter app with role-based authentication, Firebase integration, and streamlined volunteer workflows
 
@@ -11,8 +12,6 @@
 🤝 Open to collaborating on impactful tech projects involving app development, ML, numerical computing, or web technologies
 
 🎓 Computing Science undergraduate | Dean’s List | Research Award recipient
-
-📫 Reach me on Instagram (ID in bio)
 
 😄 Pronouns: she/her
 <!---
