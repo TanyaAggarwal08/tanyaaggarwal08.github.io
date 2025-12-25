@@ -1023,3 +1023,37 @@ project-links {
     width: 16px;
     height: 16px;
 }
+
+project-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.project-btn {
+    padding: 0.6rem 1.2rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.project-btn svg {
+    width: 16px;
+    height: 16px;
+}
